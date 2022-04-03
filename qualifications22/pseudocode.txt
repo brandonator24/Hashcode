@@ -1,0 +1,73 @@
+Contributors[N];
+name
+skill & level
+
+Projects[M];
+name
+duration to finish in days
+score for completing
+best before date
+list of roles 
+
+each project has roles that needs to be completed by contributors
+each role requires one skill & level
+each contributor at most can fill one role per project
+
+conitrubutor needs equal pr greater skill for role
+but can be less then 1 if another contributor on same project has his skill equal 
+^^^being mentored
+
+
+one contributor can mentor multiple people at once
+a contributor can be mentored and mentor others same time
+
+not posessing a skill = level 0
+can work on said role level 1 but need a team member that knows role with skill 
+
+once contriubtors work on project day x they can work on others after duration
+contributors working on projects improve their skill level by 1 if role is equal to or more.
+
+mentoring does not improve skill
+
+the first line of data gives number of contriubtors 
+the next an int number of projects
+
+first line = contributors name
+next line = indivisual skills and level 
+
+next the projects 
+frist line = name of project
+length of project in days
+int score awaarded for completing
+best before date
+
+next line = skill & skill level
+
+   0                to                       N        0                         to                          M
+C[name, numskills, skill, skill level, name...] and P[name, projlength, score, bestbefore, skill, skill level]
+
+brute force:
+
+while(M projects not 0)
+    for(0 contributor to N)
+
+        if project[m] full:
+            exit loop
+        
+        if contributor[n] not in a project[m]:
+
+            if contributor[n].skilllevel equals or greater project[m].skilllevel:
+            store contributor in team[]
+            contributor can be a mentor for this skill
+
+            else if |contributor.skilllevel - project.skilllevel| = 1://possibility of being mentored
+            look for a possible mentor in team[]
+            if  no mentor:
+                while(N contributor not 0)
+                     if contributor[k].skilllevel equals or greater project[m].skilllevel:
+                        add contributor[k] in team[]
+                        add contributor[n] in team[]
+                        exit loop
+
+            else if |contributor.skilllevel - project.skilllevel| > 1:
+            continue loop     
